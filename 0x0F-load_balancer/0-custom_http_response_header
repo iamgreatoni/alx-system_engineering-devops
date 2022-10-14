@@ -1,13 +1,27 @@
 #!/usr/bin/env bash
-# a script that installs and redirects /redirect_me on nginx server
+# Script to configure web-02 exactly like web-01
 
-sudo apt-get -y update
+sudo apt-get update
 sudo apt-get -y install nginx
-sudo chown -R $USER:$USER /var/www/html
-sudo rm /var/www/html/index.nginx-debian.html
-echo "Hello World!" > /var/www/html/index.nginx-debian.html
-echo "Ceci n'est pas une page" >> /var/www/html/error_404.html
-sudo sed -i '24i\	rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-enabled/default
-sudo sed -i '25i\	error_page 404 /error_404.html;' /etc/nginx/sites-enabled/default
-sudo sed -i "11i\\\tadd_header X-Served-By $HOSTNAME;" /etc/nginx/sites-enabled/default
-sudo service nginx start
+echo "Hello World From Oni John Oluwaseun!" > /var/www/html/index.html
+echo -e "Ceci n'est pas une page" > /var/www/html/error-page.html
+echo "server {
+		listen 80 default_server;
+	        listen [::]:80 default_server;
+		root /var/www/html;
+		index index.html index.html;
+		server_name _;
+		location / {
+			try_files \$uri \$uri/ =404;
+			add_header X-Served-By \$hostname;
+		}
+		if (\$request_filename ~ redirect_me) {
+			rewrite ^ https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;
+		}
+		error_page 404 /error-page.html;
+		location = /error-page.html{
+			root /var/www/html;
+			internal;
+		}
+	}" > /etc/nginx/sites-available/default
+service nginx restart
