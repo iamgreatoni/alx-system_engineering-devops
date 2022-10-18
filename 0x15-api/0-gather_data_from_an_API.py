@@ -1,7 +1,6 @@
 #!/usr/bin/python3
-# A script that gathers data from an API.
-# Write a Python script that, using this REST API, for a given employee ID, returns information about his/her ToDo list progress
-
+'''A script that gathers data from an API.
+'''
 import re
 import requests
 import sys
