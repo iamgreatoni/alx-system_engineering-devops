@@ -9,7 +9,7 @@ def top_ten(subreddit):
     """ Returns: top ten post titles
         or None if queried subreddit is invalid """
 
-    headers = {'User-Agent': 'iamgreat95'}
+    headers = {'User-Agent': 'iamgreat96'}
     url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
     parameters = {'limit': 10}
     response = requests.get(url, headers=headers, allow_redirects=False,
