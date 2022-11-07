@@ -1,3 +1,5 @@
+[label](https://camo.githubusercontent.com/7f427f06243ae054b44def810f654257960cab96ad54b07a65b22b2c69d8e6dd/68747470733a2f2f6d69726f2e6d656469756d2e636f6d2f6d61782f313430302f302a6b486f574437674a30504339476d424b2e6a7067)
+
 # ISSUE SUMMARY
 
 On 23/10/2022 from about 12:15 AM to 6:45 AM (wat), our web-01 server was down, causing all of our users inability to access our services. 
